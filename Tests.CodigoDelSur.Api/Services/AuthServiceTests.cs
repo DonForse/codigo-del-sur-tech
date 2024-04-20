@@ -5,7 +5,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using MockQueryable.Moq;
 using Moq;
-using Tests.CodigoDelSur.Api.MoqDbHelper;
 
 namespace Tests.CodigoDelSur.Api.Services;
 
@@ -69,20 +68,6 @@ public class AuthServiceTests
         // Assert
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Username, Is.EqualTo("existingUser"));
-        
-    }
-
-    public static Mock<DbSet<T>> CreateMockDbSet<T>(List<T> sourceList) where T : class
-    {
-        var queryable = sourceList.AsQueryable();
-        var mockSet = new Mock<DbSet<T>>();
-
-        // Setting up the provider to handle async operations
-        mockSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(new TestAsyncQueryProvider<T>(queryable.Provider));
-        mockSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
-        mockSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
-        mockSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(queryable.GetEnumerator());
-
-        return mockSet;
+       
     }
 }

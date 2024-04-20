@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodigoDelSurApi.Api\CodigoDelSurApi.Api.csproj" />
-    <ProjectReference Include="..\CodigoDelSurApi.Delivery\CodigoDelSurApi.Delivery.csproj" />
   </ItemGroup>
 
   <ItemGroup>
